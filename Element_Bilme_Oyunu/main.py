@@ -1,8 +1,10 @@
 # Selim Eren Kaya tarafından bu program yapılmıştır.
-# Oyun Sonu Ekranı = -
 
 # Periyodik tablodaki en çok bilinen elementler bilme oyunu
 from widgets import *
+import sys
+import subprocess
+import pkg_resources
 
 
 # Oyunun oynanacağı arayüzün tasarlandığı bölüm
@@ -55,4 +57,12 @@ class App(ctk.CTk):
         self.oyun.grid(column=2, row=1)
 
 
+# Gerekli paketlerin indirilmesinin gerçekleştiği kısım
+gereksinimler = {"customtkinter"}
+indirilmis = {pkg.key for pkg in pkg_resources.working_set}
+missing = gereksinimler - indirilmis
+if missing:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', *missing])
+
+# Uygulamanın başlatıldığı kısım
 App()
