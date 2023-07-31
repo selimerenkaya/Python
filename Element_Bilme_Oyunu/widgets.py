@@ -207,7 +207,7 @@ class Oyun(ctk.CTkFrame):
 
     # Sorulara verilen cevapları kontrol eden metot
     def cevap_kontrol(self, soru_cevabi, dogru_cevap, grid1, grid2, grid3, grid4, grid5):
-        if soru_cevabi.get() == dogru_cevap:
+        if soru_cevabi.get().lower() == dogru_cevap.lower():
             self.puan += 5
         else:
             self.puan -= 3
